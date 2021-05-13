@@ -5,7 +5,10 @@ export default function (instance, eventList) {
   ev && ev.forEach(event => {
     const hasOn = event.slice(0, 2) === 'on'
     const eventName = hasOn ? event.slice(2) : event
-    const listener = this.$listeners[eventName]
+    let listener = this.$listeners[eventName]
+    if (!listener) {
+      listener = this.$listeners[eventName.toLowerCase()]
+    }
     listener && instance.addEventListener(event, listener.fns)
   })
 }

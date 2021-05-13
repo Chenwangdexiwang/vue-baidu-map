@@ -43,3 +43,6 @@ dist
 coverage
 
 /index.js
+./history
+./history/**
+./history/**/*
